@@ -1,4 +1,7 @@
 #include "Errors.h"
+#include <stdio.h>
+
+
 
 int Option_isSome(Option_t self){
     return (self.type == Some_opt) ? 1 : 0;
@@ -16,9 +19,9 @@ Option_t Option_wrap(void* content, int type){
     option.content=content;
     option.type=type;
 
-    option.isSome=Option_isSome;
-    option.unwrap=Option_unwrap;
-
+    option.fn_isSome=Option_isSome;
+    option.fn_unwrap=Option_unwrap;
+    
     return option;
 }
 
@@ -33,16 +36,21 @@ void* Result_unwrap(Result_t self){
     return self.content;
 }
 
+
 /*
-    wraps inside an option of type Some or None a pointer to a content
+    wraps inside an option of type Ok or Err a pointer to a content
 */
 Result_t Result_wrap(void* content, int type){
     Result_t result;
     result.content=content;
     result.type=type;
 
-    result.isOk=Result_isOk;
-    result.unwrap=Result_unwrap;
+    result.fn_isOk=Result_isOk;
+    result.fn_unwrap=Result_unwrap;
+    
 
     return result;
 }
+
+
+
