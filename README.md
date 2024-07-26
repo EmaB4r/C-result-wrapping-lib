@@ -1,4 +1,4 @@
-# C-result-wrapping-lib
+# Rust Errors in C
 pointless recreation of Rust's error handling in C
 
 Simple test library that implements Rust's Option and Result types.  
